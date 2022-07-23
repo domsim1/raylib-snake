@@ -11,6 +11,7 @@ Snake made in C99 with raylib (for fun).
 | s   | Move Down    |
 | d   | Move Right   |
 | r   | Restart Game |
+| v   | Toggle VSync |
 
 ## Build
 

@@ -14,10 +14,12 @@ const float speedRate = 0.005f;
 const float speedLimit = 0.060f;
 const int scoreMultiplier = 10;
 
+bool vSync = false;
+
 Vector2 origin;
 Rectangle rect;
 
-int rotation;
+float rotation;
 
 enum Direction {
     None,
@@ -47,7 +49,6 @@ struct Snake {
 int main(void) {
 
     InitWindow(screenWidth, screenHeight, "Snake");
-    SetTargetFPS(60);
     Setup();
 
     while (!WindowShouldClose())
@@ -85,7 +86,7 @@ void Setup() {
     rect.height = scale;
     rect.width = scale;
 
-    rotation = 0;
+    rotation = 0.0f;
 }
 
 void Update() {
@@ -96,10 +97,22 @@ void Update() {
         return;
     }
 
+    if (IsKeyPressed(KEY_V)) {
+        if (vSync) {
+            vSync = !vSync;
+            SetTargetFPS(0);
+        } else {
+            int monitor = GetCurrentMonitor();
+            int refreshRate = GetMonitorRefreshRate(monitor);
+            vSync = !vSync;
+            SetTargetFPS(refreshRate);
+        }
+    }
+
     float dt = GetFrameTime();
 
     if (snake.isDead) {
-        rotation += 1;
+        rotation += 60.0f * dt;
         return;
     }
 
