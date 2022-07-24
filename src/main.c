@@ -15,6 +15,7 @@ const float speedLimit = 0.060f;
 const int scoreMultiplier = 10;
 
 bool vSync = false;
+bool showFPS = false;
 
 Vector2 origin;
 Rectangle rect;
@@ -108,6 +109,8 @@ void Update() {
             SetTargetFPS(refreshRate);
         }
     }
+
+    if (IsKeyPressed(KEY_F)) showFPS = !showFPS;
 
     float dt = GetFrameTime();
 
@@ -205,4 +208,6 @@ void Draw() {
     if (snake.isDead) {
         DrawText(TextFormat("Final Score: %i", (snake.length-2)*scoreMultiplier), scale/2, scale*2, scale*2, WHITE);
     }
+
+    if (showFPS) DrawFPS(scale/2, screenHeight-scale);
 }
