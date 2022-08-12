@@ -16,7 +16,9 @@ Snake made in C99 with raylib (for fun).
 
 ## Build
 
-Requires Raylib 4.0.0.
-
-Run `make` to build. Note; build is setup for MacOS only. You should be able to build on other operating sysems with some tweaks.
+To Build run the following.
+```
+cmake -B build
+cmake --build build
+```
 
