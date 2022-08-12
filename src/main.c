@@ -202,7 +202,7 @@ void Draw() {
     rect.y = snake.head->y;
     DrawRectanglePro(rect, origin, rotation, ORANGE);
 
-    DrawRectangle(0, 0, 30*scale, scale, PURPLE);
+    DrawRectangle(0, 0, gridWidth*scale, scale, PURPLE);
     DrawText(TextFormat("Score: %i", (snake.length-2)*scoreMultiplier), scale/2, 1, scale, WHITE);
 
     if (snake.isDead) {

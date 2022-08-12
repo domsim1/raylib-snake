@@ -1,6 +1,6 @@
-CFLAGS=-O2 -Werror -Wall -Wextra -Wpedantic 
+CFLAGS=-O2 -Werror -Wall -Wextra -Wpedantic
 FRAMEWORKS=-framework CoreVideo -framework IOKit -framework Cocoa -framework GLUT -framework OpenGL
-RAYLIB=libraylib.a
+RAYLIB=`pkg-config --libs --cflags raylib`
 STD=-std=c99
 
 snake: src/main.c src/main.h src/linked_list.h
